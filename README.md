@@ -86,4 +86,32 @@ This repository is used for testing the following
 - Please note that the only `fetch` source here is from the Github, so `git pull` would only pull changes from the Github remote repository. 
   As there are 2 remote repositories for this local repository, each time `git push` would push changes to the 2 different remote repositories at the same time.
 
+- For example, after I made some changes locally and when I do `git push`, I got the following messages. As you could see, the first part of the log said it was pushing changes to **Github**, while the second part of the log means it was pushing changes to **Gitee**, they happened at the same time.
+
+  ```sh
+  Pyrad@SSEA MINGW64 /d/GithubClone/multi_remote_repo_test (master)
+  $ git push
+  Enumerating objects: 5, done.
+  Counting objects: 100% (5/5), done.
+  Delta compression using up to 4 threads
+  Compressing objects: 100% (2/2), done.
+  Writing objects: 100% (3/3), 1.07 KiB | 546.00 KiB/s, done.
+  Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+  remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+  To github.com:Pyrad/multi_remote_repo_test.git
+     f6bff1b..124117d  master -> master
+  Enumerating objects: 5, done.
+  Counting objects: 100% (5/5), done.
+  Delta compression using up to 4 threads
+  Compressing objects: 100% (2/2), done.
+  Writing objects: 100% (3/3), 1.07 KiB | 1.07 MiB/s, done.
+  Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+  remote: Powered by GITEE.COM [GNK-6.3]
+  To gitee.com:pyrad/multi_remote_repo_test.git
+     f6bff1b..124117d  master -> master
+  
+  ```
+
+  
+
 - 
