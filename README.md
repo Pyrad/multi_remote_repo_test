@@ -49,14 +49,16 @@ This repository is used for testing the following
   git remote add origin git@github.com:Pyrad/multi_remote_repo_test.git
   ```
 
+- funny part now
+
+  ```sh
+  git remote set-url --add origin git@gitee.com:pyrad/multi_remote_repo_test.git
+  ```
+
   
 
 - xx
-
 - xx
-
 - xx
-
 - xx
-
 - 
