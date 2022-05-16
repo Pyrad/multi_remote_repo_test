@@ -23,10 +23,15 @@ This repository is used for testing the following
   Since the first time there's no corresponding branch in the remote repository, then we should specify one when before pushing for the first time
 
   ```sh
+  # -*-*-*-*-*-*-*-* Choice 1 -*-*-*-*-*-*-*-*
   # Set remote's branch which corresponds this local repo's current branch
   git branch --set-upstream-to=origin/<BRANCH_NAME>
   # Push to remote
   git push
+  
+  # -*-*-*-*-*-*-*-* Choice 2-*-*-*-*-*-*-*-*
+  # Or directly set upstream when pushing for the first time
+  git push --set-upstream origin master
   ```
 
   
