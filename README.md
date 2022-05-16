@@ -38,27 +38,52 @@ This repository is used for testing the following
 
 - Still create some files, delete some files, edit some files, ... and commit them to this local repository, **and** push them to the remote just added as shown above, repeat again and again, until you don't want to do anymore.
 
-- Now here's the funny part, link this local repository (which already has one remote) to another different   remote repository (e.g., Gitee), by `git remote add <repo_name> <url>`. Of course, this different remote repository should be just created and keep empty.
-
-  ```sh
-  # Command
-  git remote add <repo_name> <url>
-  # For example, here now I'm in a local git repo,
-  # and I've already linked it to a remote repo named multi_remote_repo_test in Github,
-  # then I link this local git repo to another remote by sepcifying the name and its URL
-  git remote add origin git@github.com:Pyrad/multi_remote_repo_test.git
-  ```
-
-- funny part now
+- Now here's the funny part, add another remote URL for the previous remote name, which means now the same remote name `origin` now corresponds to different remote repositories!!
+  Because I add this local repository to the Github as the first remote repository, the `fetch` is from the Github, if you first add this local repository to the Gitee (maybe other remotes), then `fetch` here would be from Gitee.
 
   ```sh
   git remote set-url --add origin git@gitee.com:pyrad/multi_remote_repo_test.git
+  
+  # Before add a new url for a same remote name
+  Pyrad@SSEA MINGW64 /d/GithubClone/multi_remote_repo_test (master)
+  $ git remote -v
+  origin  git@github.com:Pyrad/multi_remote_repo_test.git (fetch)
+  origin  git@github.com:Pyrad/multi_remote_repo_test.git (push)
+  
+  # Add a new url for a same remote name
+  Pyrad@SSEA MINGW64 /d/GithubClone/multi_remote_repo_test (master)
+  $ git remote set-url --add origin git@gitee.com:pyrad/multi_remote_repo_test.git
+  
+  # After add a new url for a same remote name
+  Pyrad@SSEA MINGW64 /d/GithubClone/multi_remote_repo_test (master)
+  $ git remote -v
+  origin  git@github.com:Pyrad/multi_remote_repo_test.git (fetch)
+  origin  git@github.com:Pyrad/multi_remote_repo_test.git (push)
+  origin  git@gitee.com:pyrad/multi_remote_repo_test.git (push)
   ```
 
   
 
-- xx
-- xx
-- xx
-- xx
+- Since now you just set another URL for this remote name, which means the other remote could now be pushed to, try it
+
+  ```sh
+  Pyrad@SSEA MINGW64 /d/GithubClone/multi_remote_repo_test (master)
+  $ g push
+  Everything up-to-date
+  Enumerating objects: 12, done.
+  Counting objects: 100% (12/12), done.
+  Delta compression using up to 4 threads
+  Compressing objects: 100% (8/8), done.
+  Writing objects: 100% (12/12), 1.75 KiB | 596.00 KiB/s, done.
+  Total 12 (delta 3), reused 0 (delta 0), pack-reused 0
+  remote: Powered by GITEE.COM [GNK-6.3]
+  To gitee.com:pyrad/multi_remote_repo_test.git
+   * [new branch]      master -> master
+  ```
+
+  As above shown, for the Github remote repository, everything is up to date and no change to push, but for the Gitee, some changes would be pushed to it.
+
+- Please note that the only `fetch` source here is from the Github, so `git pull` would only pull changes from the Github remote repository. 
+  As there are 2 remote repositories for this local repository, each time `git push` would push changes to the 2 different remote repositories at the same time.
+
 - 
